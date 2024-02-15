@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {  useDispatch } from "react-redux";
+import { deposite,withdraw,fname,phone } from "../Store/actions";
 function Form(){
     const dispatch = useDispatch();
     let [values,setValue]=useState({
@@ -20,12 +21,12 @@ function Form(){
        <div>
         <input type="number" name="balance" value={values.balance} onChange={Changed} /> &nbsp;
         <button onClick={()=>{
-            dispatch({type:'Deposite',payload:values.balance})
+            dispatch(deposite(values.balance))
             setValue("")
         }}>Deposite</button> &nbsp;
 
         <button onClick={()=>{
-            dispatch({type:'Withdraw',payload:values.balance})
+            dispatch(withdraw(values.balance))
             setValue("")
         }}>Withdraw</button>
 
@@ -33,7 +34,7 @@ function Form(){
 <input type="text" name="fname" value={values.fname} onChange={Changed} />  &nbsp;
 
 <button onClick={()=>{
-            dispatch({type:'fullName',payload:values.fname})
+            dispatch(fname(values.fname))
             setValue("")
         }}>updateName</button>
 
@@ -43,7 +44,7 @@ function Form(){
 <input type="number" name="phoneNumber" value={values.phoneNumber} onChange={Changed} />  &nbsp;
 
 <button onClick={()=>{
-            dispatch({type:'phoneNumber',payload:values.phoneNumber});
+            dispatch(phone(values.phoneNumber));
             setValue("");
         }}>UpdateNumber</button>
 
